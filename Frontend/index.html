@@ -1,0 +1,423 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="zxx">
+  <head>
+    <!-- Meta -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1" />
+
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.5.2/dist/web3.min.js"></script>
+
+    <!-- Favicon -->
+    <link
+      rel="shortcut icon"
+      href="image/favicon.ico"
+      type="image/x-icon" />
+    <link
+      rel="icon"
+      href="image/favicon.ico"
+      type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="styles.css" />
+    <!-- Icons -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/pe-icon-7-stroke.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/pe-helper.css" />
+    <link
+      rel="stylesheet"
+      href="css/bootstrap-icons.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/all.min.css" />
+
+    <!-- Fonts -->
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com" />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400;1,700&family=Poppins:wght@700;900&display=swap"
+      rel="stylesheet" />
+
+    <!-- CSS -->
+    <link
+      href="css/bootstrap.min.css"
+      rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="css/swiper-bundle.min.css" />
+    <link
+      rel="stylesheet"
+      href="css/leaflet.css" />
+    <link
+      rel="stylesheet"
+      href="css/aos.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="css/style.css" />
+
+    <title>DBDC.io | Decentralized Bank Digital Currency</title>
+  </head>
+  <body
+    data-bs-spy="scroll"
+    data-bs-target="#site-navbar"
+    class="home-minimal dark-mode">
+    <div class="mainLogoContainer">
+      <button
+        id="login-modal"
+        class="login">
+        LOGIN
+      </button>
+      <button
+        id="signup-modal"
+        class="signup">
+        SIGNUP
+      </button>
+      <!-- <img
+                  class="mainLogoImage"
+                  src="logo.png"
+                  alt="logo" /> -->
+    </div>
+    <!-- PRE LOADER -->
+    <div class="preloader js-preloader flex-center">
+      <div class="dots">
+        <div class="dot"></div>
+        <div class="dot"></div>
+        <div class="dot"></div>
+      </div>
+    </div>
+
+    <!-- SITE HEADER -->
+    <header
+      class="site-header"
+      id="site-header">
+      <nav
+        class="navbar navbar-expand-xl"
+        id="site-navbar">
+        <div class="container">
+          <!--<a class="navbar-brand" href="index_dark.html"><img class="img-fluid" src="image/logo.png" alt="dbdc logo"></a>-->
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="bi bi-list"></i></span>
+          </button>
+          <div
+            class="collapse navbar-collapse"
+            id="navbarSupportedContent">
+            <!-- .navbar-nav -->
+            <ul class="nav-social list-inline">
+              <li class="list-inline-item">
+                <a href="#"><i class="fab fa-discord"></i></a>
+              </li>
+              <li class="list-inline-item">
+                <a href="https://twitter.com/dbdcio"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+              </li>
+            </ul>
+            <!-- .hero-social -->
+          </div>
+          <!-- .collapse -->
+        </div>
+        <!-- .container -->
+      </nav>
+      <!-- .navbar -->
+    </header>
+    <!-- .site-header -->
+
+    <!-- HERO AREA -->
+
+    <section
+      class="hero-area"
+      id="hero-area">
+      <div class="container">
+        <div class="hero-content d-flex justify-content-center">
+          <div class="row d-flex align-items-center justify-content-center">
+            <div class="col-xl-10 content-block">
+              <h1 class="hero-head">DBDC<strong>.io</strong></h1>
+              <p>
+                Decentralized Bank Digital
+                <span
+                  class="typer"
+                  id="main"
+                  data-words="Currency, Token, Crypto"
+                  data-delay="100"
+                  data-deleteDelay="1000"></span>
+                <span
+                  class="cursor"
+                  data-owner="main"></span>
+              </p>
+              <div class="link-group">
+                <a
+                  target="_blank"
+                  id="twitterLink"
+                  href="https://twitter.com/dbdcio"
+                  class="btn-main"
+                  >Twitter</a
+                >
+                <a
+                  class="btn-ghost"
+                  href="#"
+                  >Discord</a
+                >
+              </div>
+              <!-- .link-group -->
+
+              <!-- <div class="btn-main"> -->
+
+              <div
+                id="twitter_line"
+                style="top: 2vw; position: relative; color: red">
+                Claim Airdrop you must follow on twitter and Sent your X Handle
+                in Discord
+              </div>
+
+              <div id="ok">
+                <a
+                  id="connectWalletButton"
+                  class="btn-ghost claim-wallet"
+                  href="#"
+                  >Claim</a
+                >
+                <a
+                  id="walletAddress"
+                  class="btn-ghost claim-wallet"
+                  style="display: none"
+                  href="#"></a>
+              </div>
+            </div>
+            <!-- .content-block -->
+          </div>
+          <!-- .row -->
+        </div>
+        <!-- .hero-content -->
+      </div>
+
+      <!-- .container -->
+    </section>
+
+    <!-- ======================>>>>>>>>>>>>>----auth section-----<<<<<<<<<<<<================================= -->
+
+    <div
+      id="login-modal"
+      class="modal-login login-modal">
+      <div class="modal-box">
+        <span class="closelogin">&times;</span>
+        <form
+          action=""
+          class="Login-box"
+          id="loginform">
+          <div class="logoImage">
+            <img
+              src="logo.PNG"
+              alt="dbdc.io logo" />
+          </div>
+          <div class="heading">LOGIN</div>
+          <label for="">Email</label>
+          <input
+            type="email"
+            class="email"
+            name="email"
+            required />
+          <label for="">PASSWORD</label>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            required />
+          <div class="goToLogin">
+            Forgot Password?
+            <button
+              id="forgot-modal"
+              type="button"
+              class="forgot">
+              click here
+            </button>
+          </div>
+          <div class="buttonsContainer">
+            <button
+              type="submit"
+              class="LoginButton">
+              LOGIN
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Signup Modal -->
+    <div class="modal-signup signup-modal">
+      <div class="modal-box">
+        <span class="closesignup">&times;</span>
+        <form
+          action=""
+          class="signup-box"
+          id="signupForm">
+          <div class="logoImage">
+            <img
+              src="logo.PNG"
+              alt="dbdc.io logo" />
+          </div>
+          <div class="heading">SIGNUP</div>
+          <label for="">USER NAME</label>
+          <input
+            type="text"
+            class="name"
+            name="userName"
+            required />
+          <label for="">EMAIL</label>
+          <input
+            type="email"
+            class="name"
+            name="email"
+            required />
+          <label for="">PASSWORD</label>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            required />
+          <label
+            for=""
+            class="secretKeyField"
+            >SECRET KEY</label
+          >
+          <div class="warningContainer">
+            <p
+              style="color: yellow"
+              class="warning">
+              Warning: If you lose or forget your secret key, there is NO way to
+              recover your account. We do not store your key, and for security
+              reasons, we cannot assist in its retrieval. Make sure to keep it
+              in a safe and accessible place.
+            </p>
+          </div>
+          <input
+            type="text"
+            class="name"
+            name="secertKey"
+            required />
+          <div class="goTosignup">
+            Already have an account?Click on login Button
+          </div>
+          <div class="buttonsContainer">
+            <button class="signupButton">SIGNUP</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Forgot Modal -->
+    <div class="modal-forgot forgot-modal">
+      <div class="modal-box">
+        <span class="closeforgot">&times;</span>
+        <form
+          id="forgetForm"
+          action=""
+          class="signup-box">
+          <div class="logoImage">
+            <img
+              src="logo.PNG"
+              alt="dbdc.io logo" />
+          </div>
+          <div class="heading">FORGOT PASSWORD</div>
+          <!-- <label for="">USER NAME</label>
+          <input type="text" class="name" required />
+          <label for="">EMAIL</label>
+          <input type="email" class="name" required /> -->
+          <label
+            for=""
+            class="secretKeyField"
+            >SECRET KEY</label
+          >
+          <input
+            type="text"
+            class="name"
+            name="secertKey"
+            required />
+          <div class="buttonsContainer">
+            <button
+              id="reset-modal"
+              class="forgotButton">
+              Proceed
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- Reset Modal -->
+    <div class="modal-reset reset-modal">
+      <div class="modal-box">
+        <span class="closereset">&times;</span>
+        <form
+          action=""
+          class="Login-box"
+          id="resetForm">
+          <div class="logoImage">
+            <img
+              src="logo.PNG"
+              alt="dbdc.io logo" />
+          </div>
+          <div class="heading">RESET PASSWORD</div>
+          <label for="">NEW PASSWORD</label>
+          <input
+            type="password"
+            class="password"
+            name="password"
+            required />
+          <!-- <label for="">CONFIRM NEW PASSWORD</label>
+          <input
+            type="password"
+            class="password"
+            required /> -->
+          <div class="buttonsContainer">
+            <button class="ResetButton">RESET PASSWORD</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- ================================================= -->
+    <script src="auth.js"></script>
+    <script src="script.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script></script>
+    <!-- .hero-area -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/crypto-js.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/oauth-1.0a@2.2.6/oauth-1.0a.min.js"></script>
+    <!-- <script src="../../node_modules/web3/dist/web3.min.js"></script> -->
+    <script src="js/Claim.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/imagesloaded.pkgd.min.js"></script>
+    <script src="js/isotope.pkgd.min.js"></script>
+    <script src="js/swiper-bundle.min.js"></script>
+    <script src="js/leaflet.js"></script>
+    <script src="js/jquery.waypoints.min.js"></script>
+    <script src="js/jquery.counterup.min.js"></script>
+    <script src="js/aos.js"></script>
+    <script src="js/jquery.preloadinator.min.js"></script>
+    <script src="js/vanilla-tilt.min.js"></script>
+    <script src="js/typer.js"></script>
+    <!-- .<script src="js/magicmouse.js"></script> -->
+    <script src="js/script.js"></script>
+  </body>
+</html>

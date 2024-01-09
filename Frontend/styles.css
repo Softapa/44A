@@ -1,0 +1,418 @@
+/** @format */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+* {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  color: black;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+  list-style: none;
+}
+
+/* body {
+  height: 90vh;
+  background-color: #212228;
+} */
+
+.mainLogoContainer {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mainLogoImage {
+  width: 30vw;
+}
+
+.modal-reset,
+.modal-signup,
+.modal-login,
+.modal-forgot {
+  display: none;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.47);
+  top: 0;
+  left: 0;
+  overflow: auto;
+  display: none;
+}
+
+.modal-signup.active,
+.modal-login.active,
+.modal-forgot.active,
+.modal-reset.active {
+  display: block;
+  z-index: 999999999;
+}
+
+.modal-box {
+  width: 35vw;
+  max-width: 380px;
+  margin: 30px auto;
+  background-color: #212228;
+  position: absolute;
+  right: 2vw;
+  text-align: center;
+  padding: 3vw 2vw 2vw 2vw;
+  border: 1px solid white;
+  z-index: 9999999999;
+}
+
+.modal-box .closelogin,
+.modal-box .closesignup,
+.modal-box .closeforgot,
+.modal-box .closereset {
+  position: absolute;
+  right: 1vw;
+  top: -0.1vw;
+  font-size: 3vw;
+  font-weight: bolder;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.modal-box .closesignup:hover,
+.modal-box .closesignup:focus,
+.modal-box .closelogin:hover,
+.modal-box .closelogin:focus,
+.modal-box .closeforgot:hover,
+.modal-box .closeforgot:focus,
+.modal-box .closereset:hover,
+.modal-box .closereset:focus {
+  color: #c6c6c6;
+  transition: 0.5s;
+}
+
+.modal-box img {
+  display: block;
+  margin: auto;
+  margin-bottom: 1vw;
+  margin-top: 0;
+  width: 10vw;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='password'] {
+  width: 100%;
+  border: 1px solid #212228;
+  display: block;
+  padding: 8px;
+  margin: 5px 0;
+  margin-bottom: 10px;
+  color: white;
+  background: transparent;
+  font-size: 1vw;
+}
+
+.modal-box .signup-button .modal-box .login-button {
+  flex: 1;
+  padding: 10px;
+  font-size: 15px;
+  display: block;
+  /* width: 100%; */
+  color: white;
+  background-color: #29a6d4;
+  margin: 16px 0;
+}
+input[type='checkbox'] {
+  margin-right: 2px;
+  vertical-align: baseline; /*no effect for baseline*/
+}
+
+.close-forgot {
+  background-color: red;
+}
+
+.modal-box label,
+.modal-box .signup-button,
+.modal-box .login-button {
+  width: 95%;
+  display: block;
+  margin: 10px auto;
+
+  font-size: 1vw;
+  color: white;
+
+  text-align: left;
+  padding-top: 0.3vw;
+}
+
+.modal-box input {
+  width: 95%;
+  display: block;
+  margin: 10px auto;
+  border: 1px solid white;
+  box-shadow: 1px 1px 8px rgba(58, 104, 149, 0.8);
+  border-radius: 0.3vw;
+  transition: 0.3s;
+  font-size: 1vw;
+}
+.modal-box input:focus,
+.modal-box input:hover {
+  /* background-color: white; */
+  background-color: rgba(12, 12, 12, 0.5);
+  transition: 0.3s;
+}
+
+.modal-box .signup-button,
+.modal-box .login-button {
+  margin-top: 16px;
+  cursor: pointer;
+}
+input[type='checkbox'] {
+  display: inline-block;
+  width: auto;
+  margin-left: 16px;
+}
+.modal-box .close-forgot {
+  background-color: #d8d8d8;
+  width: 100%;
+  padding: 30px 2.5%;
+}
+
+.modal-box .cancel {
+  background-color: white;
+  font-size: 1.2vw;
+  color: #212228;
+  cursor: pointer;
+  flex: 1;
+  height: 4vw;
+}
+.modal-box span {
+  float: right;
+}
+.modal-box a {
+  color: #1483be;
+  font-weight: 500;
+  text-decoration: underline;
+}
+
+.modal-box {
+  animation-name: zoom;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease;
+  border: 2px solid #b7b7b7;
+  border-radius: 0.7vw;
+  box-shadow: 1px 1px 8px rgba(58, 104, 149, 0.8);
+}
+
+@keyframes zoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.signupButtonContainer .loginButtonContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: end;
+}
+
+.signup,
+.login {
+  padding: 0.6vw 1.8vw;
+  font-size: 1.1vw;
+  color: #212228;
+  background-color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 2vw;
+  top: 3vw;
+  /* margin-right: 2vw; */
+  text-align: center;
+  display: block;
+  /* margin-top: 20px; */
+  background-color: white;
+  color: #212228;
+  border-radius: 0.5vw;
+  border: 1px solid white;
+  transition: 0.5s;
+  z-index: 99999;
+}
+.signup:hover,
+.signup:focus,
+.login:hover,
+.login:focus {
+  color: white;
+  background-color: #212228;
+  transition: 0.5s;
+}
+
+.heading {
+  font-size: 1.5vw;
+  color: white;
+}
+
+.logoImage {
+  width: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.buttonsContainer {
+  margin-top: 1.8vw;
+  display: flex;
+  justify-content: center;
+}
+
+.forgotButton,
+.signupButton,
+.LoginButton,
+.ResetButton {
+  background-color: white;
+  font-size: 1vw;
+  color: #212228;
+  cursor: pointer;
+  padding: 0.8vw 0.8vw;
+  border-radius: 0.5vw;
+  border: 1px solid white;
+  transition: 0.5s;
+  margin: 0;
+}
+
+.forgotButton:hover,
+.forgotButton:focus,
+.LoginButton:hover,
+.LoginButton:focus,
+.signupButton:hover,
+.signupButton:focus,
+.ResetButton:hover,
+.ResetButton:focus {
+  color: white;
+  background-color: #212228;
+  transition: 0.5s;
+}
+
+.warningContainer {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+.warning {
+  font-size: 0.7vw;
+  color: yellow;
+  /* text-align: left; */
+  width: 94%;
+  text-align: justify;
+  text-justify: inter-word;
+}
+.secretKeyField {
+  margin-bottom: 2px !important;
+}
+.goToLogin,
+.goTosignup {
+  font-size: 1vw;
+  color: white;
+}
+
+.login {
+  padding: 0.6vw 1.8vw;
+  font-size: 1.1vw;
+  color: #212228;
+  background-color: white;
+  cursor: pointer;
+  position: absolute;
+  right: 11vw;
+  top: 3vw;
+  text-align: center;
+  display: block;
+  background-color: white;
+  color: #212228;
+  border-radius: 0.5vw;
+  border: 1px solid white;
+  transition: 0.5s;
+}
+.login:hover,
+.login:focus {
+  color: white;
+  background-color: #212228;
+  transition: 0.5s;
+}
+
+.forgot {
+  background-color: transparent;
+  color: #1483be;
+  font-size: 1vw;
+}
+
+@media only screen and (max-width: 820px) {
+  .signup {
+    padding: 1vw 3vw;
+    font-size: 4vw;
+    right: 3vw;
+    top: 4vw;
+    border-radius: 2vw;
+  }
+  .login {
+    padding: 1vw 3vw;
+    font-size: 4vw;
+    right: 27vw;
+    top: 4vw;
+    border-radius: 2vw;
+  }
+  .mainLogoImage {
+    width: 60vw;
+  }
+  .modal-box {
+    width: 85vw;
+    max-width: none;
+    right: 7.5vw;
+    border-radius: 3.5vw;
+  }
+  .modal-box img {
+    width: 30vw;
+    margin-bottom: 4vw;
+    margin-top: 3vw;
+  }
+  .heading {
+    font-size: 5vw;
+  }
+  .modal-box label {
+    font-size: 3.5vw;
+  }
+  .modal-box input {
+    font-size: 3vw;
+  }
+  .modal-box .closelogin,
+  .modal-box .closesignup,
+  .modal-box .closeforgot,
+  .modal-box .closereset {
+    right: 3vw;
+    top: -0.1vw;
+    font-size: 8vw;
+  }
+  .goToLogin,
+  .goTosignup {
+    font-size: 3vw;
+  }
+  .forgot {
+    font-size: 3vw;
+  }
+  .forgotButton,
+  .signupButton,
+  .LoginButton,
+  .ResetButton {
+    font-size: 4vw;
+    padding: 1.5vw 2.2vw;
+    border-radius: 1vw;
+    margin: 2vw 0;
+  }
+  .warning {
+    font-size: 2.3vw;
+  }
+}

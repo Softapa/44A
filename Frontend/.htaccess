@@ -1,0 +1,23 @@
+# Enable rewrite engine
+RewriteEngine On
+
+# Redirect www to non-www (or vice versa)
+# Replace 'example.com' with your domain
+RewriteCond %{HTTP_HOST} ^www\.example\.com [NC]
+RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]
+
+# Force HTTPS
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Set default index file
+DirectoryIndex index.php index.html
+
+# Block directory listing
+Options -Indexes
+
+# Prevent access to specific file types
+<FilesMatch "\.(htaccess|htpasswd|ini|phps|fla|psd|log|sh)$">
+  Order allow,deny
+  Deny from all
+</FilesMatch>
