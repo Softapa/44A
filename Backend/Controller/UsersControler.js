@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const { Error } = require('mongoose');
-const sentEmail = require('../Utils/SentEmail');
+
 require('dotenv').config();
 console.log(process.env.SECRET);
 const createToken = (_id) => {

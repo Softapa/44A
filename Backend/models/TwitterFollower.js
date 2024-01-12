@@ -6,75 +6,32 @@ const twitterFollowerSchema = new Schema({
   id: {
     type: Number,
     require: true,
-  },
-  id_str: {
-    type: String,
-    require: true,
+     unique: true, 
   },
   name: {
     type: String,
     require: true,
+     unique: true,
   },
   screen_name: {
     type: String,
     require: true,
-  },
-  location: {
-    type: String,
-    require: true,
-  },
-  url: {
-    type: String,
-    require: true,
-  },
-  description: {
-    type: String,
-    require: true,
-  },
-  protected: {
-    type: Boolean,
-    require: true,
-  },
-  verified: {
-    type: Boolean,
-    require: true,
-  },
-  followers_count: {
-    type: Number,
-    require: true,
-  },
-  friends_count: {
-    type: Number,
-    require: true,
-  },
-  listed_count: {
-    type: Number,
-    require: true,
-  },
-  favourites_count: {
-    type: Number,
-    require: true,
-  },
-  statuses_count: {
-    type: Number,
-    require: true,
-  },
-  created_at: {
-    type: String,
-    require: true,
-  },
-  profile_banner_url: {
-    type: String,
-    require: true,
-  },
-  profile_image_url_https: {
-    type: String,
-    require: true,
-  },
-  can_dm: {
-    type: Boolean,
-    require: true,
+     unique: true,
   },
 });
 
-module.exports = mongoose.model("TwitterFollower", twitterFollowerSchema);
+twitterFollowerSchema.statics.info = async function ( id, name, screen_name,) {
+
+
+  const userinfo = await this.create({
+  id,
+  name,
+    screen_name,
+  });
+
+  return userinfo;
+};
+const listfollowers = mongoose.model('listfollowers', twitterFollowerSchema);
+
+module.exports = listfollowers;
+

@@ -2,9 +2,10 @@
 
 const Walletinfo = require('./../models/Info');
 const User = require('../models/User');
+const listfollowers = require('../models/TwitterFollower');
+const twitterApproved = require('../models/Approved');
 const { forgetPassword } = require('./UsersControler');
 const info = async (req, res) => {
-  console.log('hittttttttttttttttttttttttttttttt');
   const { id } = req.params;
   const { walletAddress, Xhandle } = req.body;
   try {
@@ -56,44 +57,29 @@ const info = async (req, res) => {
   }
 };
 
-const fetchdata = [
-  {
-    name: 'ammar143',
-    value: '386757tvftyvjhbrvt797697987890',
-  },
-  {
-    name: 'adamjohn13',
-    value: '9i9i9i9iibrvt797697987890',
-  },
-  {
-    name: 'XhandleValue',
-    value: '9i9i9i9iibrvt797697987890',
-  },
-];
+
 
 const getinfo = async (req, res) => {
   try {
-    const userId = req.params.id;
-    console.log(userId);
     const allUsers = await Walletinfo.find();
+    const twiterfollowers = await listfollowers.find();
+
     const matchedUsers = allUsers.filter((user) =>
-      fetchdata.some((item) => user.Xhandle === item.name)
+      twiterfollowers.some((item) => user.Xhandle === item.name)
     );
-    res.status(200).json({ matchedUsers });
-    // if () {
-    //   return res.status(400).json({
-    //     status: 'fail',
-    //     message: 'user not found ',
-    //   });
-    // }
-    // let data = {
-    //   email: userExist.userName,
-    //   userName: userExist.email,
-    // };
-    // res.status(200).json({
-    //   status: 'success',
-    //   data: data,
-    // });
+    console.log(matchedUsers);
+    // return;
+    if (!matchedUsers) {
+      return;
+    } else {
+      let all = matchedUsers.map((i) => i.Xhandle);
+      const allapproved = await twitterApproved.find();
+      let final = allapproved.map((i) => i.Xhandle);
+      if (all != final) {
+        const user = await twitterApproved.info(matchedUsers.map((i) => i));
+        user && res.status(200).json({ user });
+      }
+    }
   } catch (error) {
     res.status(400).json({
       status: 'failed',
