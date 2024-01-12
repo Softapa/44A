@@ -17,7 +17,33 @@ document.addEventListener("DOMContentLoaded", function () {
     buttonContainer.style.display = "none";
 
     const user = document.getElementById("user-modal");
+    const logoutBtn = document.getElementById("logout-user")
+    
     user.style.display = "block";
+    const  userAddress = document.getElementById("user-address")
+    const content = localStorage.getItem("address")
+    userAddress.textContent= content
+
+    userAddress.textContent =
+    userAddress.textContent.substring(0, 10) + "...";
+    if(userAddress.textContent.length>10){
+      user.style.display = "none";
+      userAddress.style.display= "block"
+      logoutBtn.style.display= "block"
+
+      logoutBtn.addEventListener("click", function () {
+        localStorage.removeItem("loginid");
+        localStorage.removeItem("address")
+        const user = document.getElementById("user-modal");
+        user.style.display = "none";
+        const buttonContainer = document.getElementById("AuthContainer");
+        buttonContainer.style.display = "block";
+        window.location.href = "/";
+      });
+
+      
+    
+    }
 
     user.addEventListener("click", () => {
       const clainForm = document.getElementById("claim-modal");

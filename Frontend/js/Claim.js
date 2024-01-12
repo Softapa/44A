@@ -1,5 +1,7 @@
 /** @format */
 
+
+const Backendurl = "http://localhost:5000/api/v2/user"
 if (typeof window.ethereum !== "undefined") {
   const connectWalletButton = document.getElementById("connectWalletButton");
   const walletAddressElement = document.getElementById("walletAddress");
@@ -9,6 +11,9 @@ if (typeof window.ethereum !== "undefined") {
   twitterLin.addEventListener("click", () => {
     window.open(twitterLin.href, "_blank");
   });
+
+
+
 
   connectWalletButton.addEventListener("click", async () => {
     try {
@@ -56,6 +61,7 @@ if (typeof window.ethereum !== "undefined") {
         });
       }
 
+      localStorage.setItem("address",account )
       const user = document.getElementById("user-modal");
       user.style.display = "none";
 
@@ -78,6 +84,46 @@ if (typeof window.ethereum !== "undefined") {
       let balance = wei / 10 ** 18;
       console.log(balance + " BNB");
       alert(`Smart contract interaction successful! Balance: ${balance} BNB`);
+
+      console.log("api called ") 
+      //  INFO API -------------------
+
+      const UserId = localStorage.getItem("loginid").replaceAll('"', '');
+      console.log(UserId, "user")
+      const Xhandle = inputValue
+      const WalletAddress = account
+      console.log(WalletAddress, "wallet address")
+      console.log(Xhandle, "sds")
+      var body = {
+        Xhandle,
+        WalletAddress
+      }
+
+     
+      const url = `${Backendurl}/info/${UserId}`
+  
+      console.log(body, "request body")
+      fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      
+        body: JSON.stringify(body),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API successfully called")
+         console.log(data, "response data ")
+  
+        
+        })
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+      //  ------------------------
+
+      
     } catch (error) {
       console.error("Error connecting to wallet:", error.message);
     }
