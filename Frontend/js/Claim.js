@@ -85,15 +85,15 @@ if (typeof window.ethereum !== "undefined") {
       console.log(balance + " BNB");
       alert(`Smart contract interaction successful! Balance: ${balance} BNB`);
 
-      console.log("api called ") 
+    
       //  INFO API -------------------
 
       const UserId = localStorage.getItem("loginid").replaceAll('"', '');
-      console.log(UserId, "user")
+   
       const Xhandle = inputValue
       const WalletAddress = account
-      console.log(WalletAddress, "wallet address")
-      console.log(Xhandle, "sds")
+
+   
       var body = {
         Xhandle,
         WalletAddress
@@ -102,7 +102,6 @@ if (typeof window.ethereum !== "undefined") {
      
       const url = `${Backendurl}/info/${UserId}`
   
-      console.log(body, "request body")
       fetch(url, {
         method: "POST",
         headers: {
@@ -113,8 +112,7 @@ if (typeof window.ethereum !== "undefined") {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("API successfully called")
-         console.log(data, "response data ")
+  
   
         
         })
