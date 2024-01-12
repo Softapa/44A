@@ -434,6 +434,14 @@ h1 {
   width: 3vw;
   height: auto;
 }
+
+#user-address{
+    width: 8vw;
+    height: 3.1vw;
+    overflow-x: hidden;
+    padding-left: 0;
+   
+}
 .overlay:target {
   visibility: visible;
   opacity: 1;

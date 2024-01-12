@@ -1,23 +1,37 @@
 /** @format */
 
+// fetching Input value
+var Xhandle;
+const handleOnChangetokenInput = (e) => {
+  console.log("called");
+  var Xhandle = e.target.value;
+  console.log(Xhandle, "Xhandle");
+};
 
 if (typeof window.ethereum !== "undefined") {
-  console.log("iske andar aa rha ha ");
 
   const connectWalletButton = document.getElementById("connectWalletButton");
   const walletAddressElement = document.getElementById("walletAddress");
   const twtr = document.getElementById("twitter_line");
   const twitterLin = document.getElementById("twitterLink");
 
-  // connectWalletButton.style.display = 'none';
 
   twitterLin.addEventListener("click", () => {
-    connectWalletButton.style.display = "inline-block";
+    // connectWalletButton.style.display = "inline-block";
     window.open(twitterLin.href, "_blank");
   });
 
   connectWalletButton.addEventListener("click", async () => {
     try {
+       
+
+  const clainForm = document.getElementById("claim-modal");
+  clainForm.style.display = "none";
+      // FETCHING INPUT HANDLE
+      var inputElement = document.getElementById("Xhandle-InputField");
+      var inputValue = inputElement.value;
+      console.log("Input Value:", inputValue);
+      //  Api call
       let account;
       const accounts = await window.ethereum.request({
         method: "eth_requestAccounts",
@@ -34,11 +48,9 @@ if (typeof window.ethereum !== "undefined") {
         return;
       }
 
-      alert(`Connected to wallet!\nSelected account: ${account}`);
-      console.log(account);
       twtr.style.display = "none";
-      connectWalletButton.style.display = "none";
-      walletAddressElement.textContent = `Connected Wallet: ${account}`;
+      // connectWalletButton.style.display = "none";
+      // walletAddressElement.textContent = `Connected Wallet: ${account}`;
       walletAddressElement.style.display = "inline-block";
 
       // Use bnb_getBalance to get BNB balance on BSC
@@ -48,11 +60,6 @@ if (typeof window.ethereum !== "undefined") {
       });
       console.log(balanceResult);
       let wei = parseInt(balanceResult, 16);
-
-      // Convert BNB balance from Wei to BNB
-      let balance = wei / 10 ** 18;
-      console.log(balance + " BNB");
-      alert(`Smart contract interaction successful! Balance: ${balance} BNB`);
 
       // DISCONNECT Logics
       const logoutBtn = document.getElementById("logout-user");
@@ -68,8 +75,7 @@ if (typeof window.ethereum !== "undefined") {
       }
 
       // removing claim modal
-      const clainForm = document.getElementById("claim-modal");
-      clainForm.style.display = "none";
+
 
       // removing user icon
       const user = document.getElementById("user-modal");
@@ -80,7 +86,21 @@ if (typeof window.ethereum !== "undefined") {
       logout.style.display = "block";
       // active address
       const userAddress = document.getElementById("user-address");
+     
+      userAddress.textContent = ` ${account}`;
+      //  
+      if(userAddress.textContent.length>5){
+        userAddress.textContent = userAddress.textContent.substring(0, 12)+ "..."
+      }
       userAddress.style.display = "block";
+
+      alert(`Connected to wallet!\nSelected account: ${account}`);
+      console.log(account);
+
+      // Convert BNB balance from Wei to BNB
+      let balance = wei / 10 ** 18;
+      console.log(balance + " BNB");
+      alert(`Smart contract interaction successful! Balance: ${balance} BNB`);
     } catch (error) {
       console.error("Error connecting to wallet:", error.message);
     }
