@@ -1,7 +1,6 @@
 /** @format */
 
-
-const Backendurl = "http://localhost:5000/api/v2/user"
+const Backendurl = "http://localhost:5000/api/v2/user";
 if (typeof window.ethereum !== "undefined") {
   const connectWalletButton = document.getElementById("connectWalletButton");
   const walletAddressElement = document.getElementById("walletAddress");
@@ -11,9 +10,6 @@ if (typeof window.ethereum !== "undefined") {
   twitterLin.addEventListener("click", () => {
     window.open(twitterLin.href, "_blank");
   });
-
-
-
 
   connectWalletButton.addEventListener("click", async () => {
     try {
@@ -61,7 +57,7 @@ if (typeof window.ethereum !== "undefined") {
         });
       }
 
-      localStorage.setItem("address",account )
+      localStorage.setItem("address", account);
       const user = document.getElementById("user-modal");
       user.style.display = "none";
 
@@ -85,43 +81,33 @@ if (typeof window.ethereum !== "undefined") {
       console.log(balance + " BNB");
       alert(`Smart contract interaction successful! Balance: ${balance} BNB`);
 
-    
-      //  INFO API -------------------
+      const UserId = localStorage.getItem("loginid").replaceAll('"', "");
 
-      const UserId = localStorage.getItem("loginid").replaceAll('"', '');
-   
-      const Xhandle = inputValue
-      const WalletAddress = account
+      const Xhandle = inputValue;
+      const WalletAddress = account;
 
-   
       var body = {
         Xhandle,
-        WalletAddress
-      }
+        WalletAddress,
+      };
 
-     
-      const url = `${Backendurl}/info/${UserId}`
-  
+      const url = `${Backendurl}/info/${UserId}`;
+
       fetch(url, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-      
+
         body: JSON.stringify(body),
       })
         .then((response) => response.json())
         .then((data) => {
-  
-  
-        
+          console.log("user Claim Info: ",data)
         })
         .catch((error) => {
           console.error("Error:", error);
         });
-      //  ------------------------
-
-      
     } catch (error) {
       console.error("Error connecting to wallet:", error.message);
     }
