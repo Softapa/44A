@@ -20,3 +20,4 @@ const sentEmail = (mailOptions) => {
   });
 };
 module.exports = sentEmail;
+

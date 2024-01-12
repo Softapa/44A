@@ -76,21 +76,52 @@
     data-bs-spy="scroll"
     data-bs-target="#site-navbar"
     class="home-minimal dark-mode">
-    <div class="mainLogoContainer">
-      <button
+    <div class="mainLogoContainer" >
+      <!-- <div><img src="./image/userProfile.png" alt=""></div> -->
+      <div id="AuthContainer">
+
+        <button
         id="login-modal"
         class="login">
         LOGIN
+        
       </button>
+      
       <button
-        id="signup-modal"
-        class="signup">
-        SIGNUP
-      </button>
-      <!-- <img
-                  class="mainLogoImage"
-                  src="logo.png"
-                  alt="logo" /> -->
+      id="signup-modal"
+      class="signup">
+      SIGNUP
+    </button>
+
+   
+    
+  </div>
+      <button
+        id="user-modal"
+        class="signup custom">
+        <img class="user-img" src="./image/userProfile.png" alt="">
+      </button> 
+       <!-- add -->
+      
+       
+      <button
+      id="logout-user"
+      class="login claimed">
+      Disconnect
+    </button> 
+    <button
+      id="user-address"
+      class="signup claimed">
+     address
+    </button> 
+      
+   
+
+     
+              
+              
+   
+    
     </div>
     <!-- PRE LOADER -->
     <div class="preloader js-preloader flex-center">
@@ -134,6 +165,7 @@
                 ></a>
               </li>
             </ul>
+
             <!-- .hero-social -->
           </div>
           <!-- .collapse -->
@@ -153,6 +185,7 @@
         <div class="hero-content d-flex justify-content-center">
           <div class="row d-flex align-items-center justify-content-center">
             <div class="col-xl-10 content-block">
+              
               <h1 class="hero-head">DBDC<strong>.io</strong></h1>
               <p>
                 Decentralized Bank Digital
@@ -184,14 +217,14 @@
 
               <!-- <div class="btn-main"> -->
 
+                <!-- COMMENTED CLAIM BUTTON -->
+
               <div
-                id="twitter_line"
-                style="top: 2vw; position: relative; color: red">
-                Claim Airdrop you must follow on twitter and Sent your X Handle
-                in Discord
+                id="prompt-message"
+                style="top: 2vw; position: relative; color: rgb(255, 255, 255)">
               </div>
 
-              <div id="ok">
+              <!-- <div id="ok">
                 <a
                   id="connectWalletButton"
                   class="btn-ghost claim-wallet"
@@ -203,7 +236,11 @@
                   class="btn-ghost claim-wallet"
                   style="display: none"
                   href="#"></a>
-              </div>
+              </div> -->
+            <!-- COMMENTED CLAIM BUTTON -->
+             
+    </div>
+              <!-- ---- -->
             </div>
             <!-- .content-block -->
           </div>
@@ -220,12 +257,13 @@
     <div
       id="login-modal"
       class="modal-login login-modal">
-      <div class="modal-box">
+      <div id="formContainer" class="modal-box">
         <span class="closelogin">&times;</span>
         <form
           action=""
-          class="Login-box"
+          class="Login-box "
           id="loginform">
+          <div id="login-content">
           <div class="logoImage">
             <img
               src="logo.PNG"
@@ -255,12 +293,61 @@
           </div>
           <div class="buttonsContainer">
             <button
+            id="login-form-button"
               type="submit"
               class="LoginButton">
               LOGIN
             </button>
           </div>
+        </div>
+
+      
         </form>
+      </div>
+    </div>
+<!--  Impl -->
+    <!-- modal AUTHENTICATED -->
+
+    <div
+     
+      id="claim-modal"
+      class="modal-login login-modal ">
+      <div id="claim-container" class="modal-box">
+        <span id="claim-modal-close" class="closelogin">&times;</span>
+       <div class="heading">Claim your reward</div>
+       <label for="">Enter Your Xhandle</label>
+       <form
+       action=""
+       class="Login-box "
+       id="loginform"></form>
+       <input
+         type="email"
+         class="email"
+         name="email"
+         required />
+       <div
+                id="twitter_line"
+                >
+                Claim Airdrop you must follow on twitter and Sent your X Handle
+                in Discord
+              </div>
+          <!--  CLAIM BUTTON -->
+          <div id="ok">
+            <a
+              id="connectWalletButton"
+              class="btn-ghost claim-wallet"
+              href="#"
+              >Claim</a
+            >
+            <a
+              id="walletAddress"
+              class="btn-ghost claim-wallet"
+              style="display: none"
+              href="#"></a>
+          </div>
+
+    
+    
       </div>
     </div>
     <!-- Signup Modal -->
@@ -370,6 +457,9 @@
           action=""
           class="Login-box"
           id="resetForm">
+          <!-- <div id="login-content"> -->
+
+         
           <div class="logoImage">
             <img
               src="logo.PNG"
@@ -390,13 +480,17 @@
           <div class="buttonsContainer">
             <button class="ResetButton">RESET PASSWORD</button>
           </div>
+        <!-- </div> -->
         </form>
       </div>
-    </div>
+
+   
+  
 
     <!-- ================================================= -->
     <script src="auth.js"></script>
     <script src="script.js"></script>
+  
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <script></script>
     <!-- .hero-area -->
@@ -419,5 +513,6 @@
     <script src="js/typer.js"></script>
     <!-- .<script src="js/magicmouse.js"></script> -->
     <script src="js/script.js"></script>
+    <!-- Boostrap Imports -->
   </body>
 </html>

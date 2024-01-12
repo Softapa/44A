@@ -53,3 +53,7 @@ const closereset = document.getElementsByClassName('closereset')[0];
 closereset.onclick = function () {
   document.getElementsByClassName('reset-modal')[0].classList.remove('active');
 };
+
+
+
+
